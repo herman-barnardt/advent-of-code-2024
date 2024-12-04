@@ -4,6 +4,7 @@ import (
 	_ "advent-of-code-2024/day1"
 	_ "advent-of-code-2024/day2"
 	_ "advent-of-code-2024/day3"
+	_ "advent-of-code-2024/day4"
 	"flag"
 	"log"
 	"os"
