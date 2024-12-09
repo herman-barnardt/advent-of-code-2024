@@ -19,43 +19,46 @@ func init() {
 
 func solve2024Day9Part1(lines []string) interface{} {
 	id := 0
-	diskMap := make(map[int]string)
-	count := 0
+	files := make([]file, 0)
 	for i, char := range strings.Split(lines[0], "") {
 		val, _ := strconv.Atoi(char)
 		if i%2 == 0 {
 			for j := 0; j < val; j++ {
-				diskMap[count] = strconv.Itoa(id)
-				count++
+				files = append(files, file{id, 1})
 			}
 			id++
 		} else {
 			for j := 0; j < val; j++ {
-				diskMap[count] = "."
-				count++
+				files = append(files, file{-1, 1})
 			}
 		}
 	}
-	for i := len(diskMap) - 1; i >= 0; i-- {
-		if diskMap[i] != "." {
-			emptyIndex := -1
-			for k := 0; k < count; k++ {
-				if diskMap[k] == "." {
-					emptyIndex = k
+
+	for i := len(files) - 1; i >= 0; i-- {
+		if files[i].id != -1 {
+			for j := 0; j < i; j++ {
+				if files[j].id == -1 {
+					filesToInsert := []file{files[i]}
+					files[i].id = -1
+					files = slices.Delete(files, j, j+1)
+					files = slices.Insert(files, j, filesToInsert...)
 					break
 				}
 			}
-			if emptyIndex > i || emptyIndex == -1 {
-				break
-			}
-			diskMap[emptyIndex] = diskMap[i]
-			diskMap[i] = "."
 		}
 	}
+
 	sum := 0
-	for i, v := range diskMap {
-		num, _ := strconv.Atoi(v)
-		sum += i * num
+	count := 0
+	for _, v := range files {
+		if v.id != -1 {
+			for j := 0; j < v.length; j++ {
+				sum += count * v.id
+				count++
+			}
+		} else {
+			count += v.length
+		}
 	}
 	return sum
 }
@@ -70,7 +73,6 @@ func solve2024Day9Part2(lines []string) interface{} {
 			id++
 		} else {
 			files = append(files, file{-1, val})
-
 		}
 	}
 
@@ -82,7 +84,9 @@ func solve2024Day9Part2(lines []string) interface{} {
 					if files[i].length < files[j].length {
 						filesToInsert = append(filesToInsert, file{-1, files[j].length - files[i].length})
 					}
-					files = append(slices.Clone(files[:j]), append(append(filesToInsert, append(files[j+1:i], file{-1, files[i].length})...), files[i+1:]...)...)
+					files[i].id = -1
+					files = slices.Delete(files, j, j+1)
+					files = slices.Insert(files, j, filesToInsert...)
 					break
 				}
 			}

@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "advent-of-code-2024/day1"
+	_ "advent-of-code-2024/day10"
 	_ "advent-of-code-2024/day2"
 	_ "advent-of-code-2024/day3"
 	_ "advent-of-code-2024/day4"
