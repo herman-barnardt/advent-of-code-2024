@@ -4,6 +4,7 @@ import (
 	_ "advent-of-code-2024/day1"
 	_ "advent-of-code-2024/day10"
 	_ "advent-of-code-2024/day11"
+	_ "advent-of-code-2024/day12"
 	_ "advent-of-code-2024/day13"
 	_ "advent-of-code-2024/day14"
 	_ "advent-of-code-2024/day15"
