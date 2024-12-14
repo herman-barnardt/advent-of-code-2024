@@ -10,7 +10,7 @@
             "request": "launch",
             "mode": "debug",
             "program": "main.go",
-            "args": ["test", "10"]
+            "args": ["test"]
         },
         {
             "name": "Solve current day",
