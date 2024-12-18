@@ -6,63 +6,21 @@ import (
 	"github.com/herman-barnardt/aoc/util"
 )
 
-type pointNode struct {
-	position   util.Point
-	value      string
-	neighbours []*pointNode
-}
-
-func (p *pointNode) GetNeighbours() []graph.Node {
-	nodeNeighbours := make([]graph.Node, 0)
-	for _, neighbour := range p.neighbours {
-		if neighbour.value != "#" {
-			nodeNeighbours = append(nodeNeighbours, neighbour)
-		}
-	}
-	return nodeNeighbours
-}
-func (p *pointNode) GetCost(to graph.Node) float64 {
-	return 1
-}
-
-func (p *pointNode) GetHeuristicCost(to graph.Node) float64 {
-	return 1
-}
-
-func (p *pointNode) Equal(to graph.Node) bool {
-	toPoint := to.(*pointNode)
-	return p.position.X == toPoint.position.X && p.position.Y == toPoint.position.Y
-}
-
 func init() {
 	aoc.Register(2024, 18, solve2024Day18Part1, solve2024Day18Part2)
 }
 
-func solve2024Day18Part1(lines []string) interface{} {
+func solve2024Day18Part1(lines []string, test bool) interface{} {
 	maxX, maxY, numberOfBytes := 70, 70, 1024
-
-	grid := make(map[util.Point]*pointNode)
-
-	for y := range maxY + 1 {
-		for x := range maxX + 1 {
-			grid[util.Point{X: x, Y: y}] = &pointNode{util.Point{X: x, Y: y}, ".", make([]*pointNode, 0)}
-		}
+	if test {
+		maxX, maxY, numberOfBytes = 6, 6, 12
 	}
+
+	grid := util.CreatePointMapOfBasicNodes(maxX+1, maxY+1, ".", filterNeighbour)
 
 	for i := range numberOfBytes {
 		coords := util.StringToIntSlice(lines[i], ",")
-		grid[util.Point{X: coords[0], Y: coords[1]}].value = "#"
-	}
-
-	for y := range maxY + 1 {
-		for x := range maxX + 1 {
-			node := grid[util.Point{X: x, Y: y}]
-			for _, n := range node.position.GetAdjacent() {
-				if v, ok := grid[n]; ok && v.value != "#" {
-					node.neighbours = append(node.neighbours, v)
-				}
-			}
-		}
+		grid[util.Point{X: coords[0], Y: coords[1]}].Value = "#"
 	}
 
 	start := grid[util.Point{X: 0, Y: 0}]
@@ -73,31 +31,17 @@ func solve2024Day18Part1(lines []string) interface{} {
 	return distance
 }
 
-func solve2024Day18Part2(lines []string) interface{} {
+func solve2024Day18Part2(lines []string, test bool) interface{} {
 	maxX, maxY, numberOfBytes := 70, 70, 1024
-
-	grid := make(map[util.Point]*pointNode)
-
-	for y := range maxY + 1 {
-		for x := range maxX + 1 {
-			grid[util.Point{X: x, Y: y}] = &pointNode{util.Point{X: x, Y: y}, ".", make([]*pointNode, 0)}
-		}
+	if test {
+		maxX, maxY, numberOfBytes = 6, 6, 12
 	}
 
-	for y := range maxY + 1 {
-		for x := range maxX + 1 {
-			node := grid[util.Point{X: x, Y: y}]
-			for _, n := range node.position.GetAdjacent() {
-				if v, ok := grid[n]; ok && v.value != "#" {
-					node.neighbours = append(node.neighbours, v)
-				}
-			}
-		}
-	}
+	grid := util.CreatePointMapOfBasicNodes(maxX+1, maxY+1, ".", filterNeighbour)
 
 	for i := range len(lines) {
 		coords := util.StringToIntSlice(lines[i], ",")
-		grid[util.Point{X: coords[0], Y: coords[1]}].value = "#"
+		grid[util.Point{X: coords[0], Y: coords[1]}].Value = "#"
 	}
 
 	start := grid[util.Point{X: 0, Y: 0}]
@@ -105,7 +49,7 @@ func solve2024Day18Part2(lines []string) interface{} {
 
 	for i := len(lines) - 1; i >= numberOfBytes; i-- {
 		coords := util.StringToIntSlice(lines[i], ",")
-		grid[util.Point{X: coords[0], Y: coords[1]}].value = "."
+		grid[util.Point{X: coords[0], Y: coords[1]}].Value = "."
 
 		_, _, found := graph.FindShortestPath(start, end)
 		if found {
@@ -114,4 +58,8 @@ func solve2024Day18Part2(lines []string) interface{} {
 	}
 
 	return "Path always open"
+}
+
+func filterNeighbour(neighbour *graph.BasicNode) bool {
+	return neighbour.Value != "#"
 }
