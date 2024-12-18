@@ -18,7 +18,7 @@ func init() {
 	aoc.Register(2024, 17, solve2024Day17Part1, solve2024Day17Part2)
 }
 
-func solve2024Day17Part1(lines []string) interface{} {
+func solve2024Day17Part1(lines []string, test bool) interface{} {
 
 	combo := map[int]string{
 		0: "0",
@@ -99,7 +99,7 @@ func solve2024Day17Part1(lines []string) interface{} {
 	return out
 }
 
-func solve2024Day17Part2(lines []string) interface{} {
+func solve2024Day17Part2(lines []string, test bool) interface{} {
 	instructions := util.StringToIntSlice(lines[4][9:], ",")
 	slices.Reverse(instructions)
 

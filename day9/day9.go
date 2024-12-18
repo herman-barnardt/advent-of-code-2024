@@ -17,7 +17,7 @@ func init() {
 	aoc.Register(2024, 9, solve2024Day9Part1, solve2024Day9Part2)
 }
 
-func solve2024Day9Part1(lines []string) interface{} {
+func solve2024Day9Part1(lines []string, test bool) interface{} {
 	id := 0
 	files := make([]file, 0)
 	for i, char := range strings.Split(lines[0], "") {
@@ -63,7 +63,7 @@ func solve2024Day9Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day9Part2(lines []string) interface{} {
+func solve2024Day9Part2(lines []string, test bool) interface{} {
 	id := 0
 	files := make([]file, 0)
 	for i, char := range strings.Split(lines[0], "") {

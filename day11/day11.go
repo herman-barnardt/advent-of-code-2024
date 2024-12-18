@@ -12,7 +12,7 @@ func init() {
 	aoc.Register(2024, 11, solve2024Day11Part1, solve2024Day11Part2)
 }
 
-func solve2024Day11Part1(lines []string) interface{} {
+func solve2024Day11Part1(lines []string, test bool) interface{} {
 	stones := util.StringToIntSlice(lines[0], " ")
 	for c := 0; c < 25; c++ {
 		newStones := make([]int, 0)
@@ -34,7 +34,7 @@ func solve2024Day11Part1(lines []string) interface{} {
 	return len(stones)
 }
 
-func solve2024Day11Part2(lines []string) interface{} {
+func solve2024Day11Part2(lines []string, test bool) interface{} {
 	stones := util.StringToIntSlice(lines[0], " ")
 	sum := 0
 	cache := make(map[int]map[int]int)

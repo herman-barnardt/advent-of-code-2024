@@ -9,7 +9,7 @@ func init() {
 	aoc.Register(2024, 6, solve2024Day6Part1, solve2024Day6Part2)
 }
 
-func solve2024Day6Part1(lines []string) interface{} {
+func solve2024Day6Part1(lines []string, test bool) interface{} {
 	layout := util.LinesToPointMap(lines)
 	position := util.Point{}
 	for point, char := range layout {
@@ -45,7 +45,7 @@ func solve2024Day6Part1(lines []string) interface{} {
 	return len(visited)
 }
 
-func solve2024Day6Part2(lines []string) interface{} {
+func solve2024Day6Part2(lines []string, test bool) interface{} {
 	layout := util.LinesToPointMap(lines)
 	initialStart := util.Point{}
 	for point, char := range layout {

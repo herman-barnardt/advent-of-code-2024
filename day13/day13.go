@@ -11,7 +11,7 @@ func init() {
 	aoc.Register(2024, 13, solve2024Day13Part1, solve2024Day13Part2)
 }
 
-func solve2024Day13Part1(lines []string) interface{} {
+func solve2024Day13Part1(lines []string, test bool) interface{} {
 	sum := 0
 	for _, machine := range util.SplitLines(lines, "") {
 		xa, ya, xb, yb, xp, yp := 0, 0, 0, 0, 0, 0
@@ -27,7 +27,7 @@ func solve2024Day13Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day13Part2(lines []string) interface{} {
+func solve2024Day13Part2(lines []string, test bool) interface{} {
 	sum := 0
 	for _, machine := range util.SplitLines(lines, "") {
 		xa, ya, xb, yb, xp, yp := 0, 0, 0, 0, 0, 0

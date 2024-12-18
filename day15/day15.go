@@ -19,7 +19,7 @@ func init() {
 	aoc.Register(2024, 15, solve2024Day15Part1, solve2024Day15Part2)
 }
 
-func solve2024Day15Part1(lines []string) interface{} {
+func solve2024Day15Part1(lines []string, test bool) interface{} {
 	parts := util.SplitLines(lines, "")
 	grid, moves := util.LinesToPointMap(parts[0]), strings.Split(strings.Join(parts[1], ""), "")
 	robot := util.Point{}
@@ -42,7 +42,7 @@ func solve2024Day15Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day15Part2(lines []string) interface{} {
+func solve2024Day15Part2(lines []string, test bool) interface{} {
 	parts := util.SplitLines(lines, "")
 	for i := range len(parts[0]) {
 		parts[0][i] = strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(parts[0][i], "#", "##"), "O", "[]"), ".", ".."), "@", "@.")

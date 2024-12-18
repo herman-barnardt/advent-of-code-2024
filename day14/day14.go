@@ -30,7 +30,7 @@ func init() {
 	aoc.Register(2024, 14, solve2024Day14Part1, solve2024Day14Part2)
 }
 
-func solve2024Day14Part1(lines []string) interface{} {
+func solve2024Day14Part1(lines []string, test bool) interface{} {
 	robots := make([]*robot, 0)
 	for _, line := range lines {
 		px, py, vx, vy := 0, 0, 0, 0
@@ -56,7 +56,7 @@ func solve2024Day14Part1(lines []string) interface{} {
 	return quadrant1Count * quadrant2Count * quadrant3Count * quadrant4Count
 }
 
-func solve2024Day14Part2(lines []string) interface{} {
+func solve2024Day14Part2(lines []string, test bool) interface{} {
 	robots := make([]*robot, 0)
 	for _, line := range lines {
 		px, py, vx, vy := 0, 0, 0, 0

@@ -12,7 +12,7 @@ func init() {
 	aoc.Register(2024, 3, solve2024Day3Part1, solve2024Day3Part2)
 }
 
-func solve2024Day3Part1(lines []string) interface{} {
+func solve2024Day3Part1(lines []string, test bool) interface{} {
 	regex := regexp.MustCompile(`mul\(\d{1,3},\d{1,3}\)`)
 	sum := 0
 	for _, line := range lines {
@@ -26,7 +26,7 @@ func solve2024Day3Part1(lines []string) interface{} {
 	}
 	return sum
 }
-func solve2024Day3Part2(lines []string) interface{} {
+func solve2024Day3Part2(lines []string, test bool) interface{} {
 	regex := regexp.MustCompile(`(mul\(\d{1,3},\d{1,3}\)|do\(\)|don't\(\))`)
 	sum := 0
 	enabled := true

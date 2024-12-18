@@ -43,7 +43,7 @@ func init() {
 	aoc.Register(2024, 16, solve2024Day16Part1, solve2024Day16Part2)
 }
 
-func solve2024Day16Part1(lines []string) interface{} {
+func solve2024Day16Part1(lines []string, test bool) interface{} {
 	grid := util.LinesToPointMap(lines)
 	var start, end util.Point
 
@@ -60,7 +60,7 @@ func solve2024Day16Part1(lines []string) interface{} {
 	return lowestScore
 }
 
-func solve2024Day16Part2(lines []string) interface{} {
+func solve2024Day16Part2(lines []string, test bool) interface{} {
 	grid := util.LinesToPointMap(lines)
 	var start, end util.Point
 

@@ -13,7 +13,7 @@ func init() {
 	aoc.Register(2024, 7, solve2024Day7Part1, solve2024Day7Part2)
 }
 
-func solve2024Day7Part1(lines []string) interface{} {
+func solve2024Day7Part1(lines []string, test bool) interface{} {
 	sum := 0
 	for _, line := range lines {
 		parts := util.StringToIntSlice(strings.Replace(line, ":", "", -1), " ")
@@ -35,7 +35,7 @@ func solve2024Day7Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day7Part2(lines []string) interface{} {
+func solve2024Day7Part2(lines []string, test bool) interface{} {
 	sum := 0
 	for _, line := range lines {
 		parts := util.StringToIntSlice(strings.Replace(line, ":", "", -1), " ")

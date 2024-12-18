@@ -9,7 +9,7 @@ func init() {
 	aoc.Register(2024, 8, solve2024Day8Part1, solve2024Day8Part2)
 }
 
-func solve2024Day8Part1(lines []string) interface{} {
+func solve2024Day8Part1(lines []string, test bool) interface{} {
 	antennaMap := make(map[string][]util.Point)
 	cityMap := util.LinesToPointMap(lines)
 	for point, char := range cityMap {
@@ -36,7 +36,7 @@ func solve2024Day8Part1(lines []string) interface{} {
 	return len(antinodes)
 }
 
-func solve2024Day8Part2(lines []string) interface{} {
+func solve2024Day8Part2(lines []string, test bool) interface{} {
 	antennaMap := make(map[string][]util.Point)
 	cityMap := util.LinesToPointMap(lines)
 	for point, char := range cityMap {

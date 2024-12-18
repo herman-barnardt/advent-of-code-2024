@@ -13,7 +13,7 @@ func init() {
 	aoc.Register(2024, 1, solve2024Day1Part1, solve2024Day1Part2)
 }
 
-func solve2024Day1Part1(lines []string) interface{} {
+func solve2024Day1Part1(lines []string, test bool) interface{} {
 	list1 := make([]int, 0)
 	list2 := make([]int, 0)
 	for _, line := range lines {
@@ -35,7 +35,7 @@ func solve2024Day1Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day1Part2(lines []string) interface{} {
+func solve2024Day1Part2(lines []string, test bool) interface{} {
 	list := make([]int, 0)
 	countMap := make(map[int]int)
 	for _, line := range lines {

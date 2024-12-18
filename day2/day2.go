@@ -13,7 +13,7 @@ func init() {
 	aoc.Register(2024, 2, solve2024Day2Part1, solve2024Day2Part2)
 }
 
-func solve2024Day2Part1(lines []string) interface{} {
+func solve2024Day2Part1(lines []string, test bool) interface{} {
 	count := 0
 	for _, line := range lines {
 		levels := make([]int, 0)
@@ -29,7 +29,7 @@ func solve2024Day2Part1(lines []string) interface{} {
 	return count
 }
 
-func solve2024Day2Part2(lines []string) interface{} {
+func solve2024Day2Part2(lines []string, test bool) interface{} {
 	count := 0
 	for _, line := range lines {
 		levels := make([]int, 0)

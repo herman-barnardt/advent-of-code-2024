@@ -9,7 +9,7 @@ func init() {
 	aoc.Register(2024, 10, solve2024Day10Part1, solve2024Day10Part2)
 }
 
-func solve2024Day10Part1(lines []string) interface{} {
+func solve2024Day10Part1(lines []string, test bool) interface{} {
 	grid := util.LinesToPointMapOfInts(lines)
 	sum := 0
 	for p, v := range grid {
@@ -35,7 +35,7 @@ func solve2024Day10Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day10Part2(lines []string) interface{} {
+func solve2024Day10Part2(lines []string, test bool) interface{} {
 	grid := util.LinesToPointMapOfInts(lines)
 	sum := 0
 	for p, v := range grid {

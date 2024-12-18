@@ -9,7 +9,7 @@ func init() {
 	aoc.Register(2024, 12, solve2024Day12Part1, solve2024Day12Part2)
 }
 
-func solve2024Day12Part1(lines []string) interface{} {
+func solve2024Day12Part1(lines []string, test bool) interface{} {
 	plots := util.LinesToPointMap(lines)
 	visited := map[util.Point]bool{}
 	sum := 0
@@ -41,7 +41,7 @@ func solve2024Day12Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day12Part2(lines []string) interface{} {
+func solve2024Day12Part2(lines []string, test bool) interface{} {
 	plots := util.LinesToPointMap(lines)
 	visited := map[util.Point]bool{}
 	sum := 0

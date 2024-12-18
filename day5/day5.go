@@ -11,7 +11,7 @@ func init() {
 	aoc.Register(2024, 5, solve2024Day5Part1, solve2024Day5Part2)
 }
 
-func solve2024Day5Part1(lines []string) interface{} {
+func solve2024Day5Part1(lines []string, test bool) interface{} {
 	rules := make(map[int][]int)
 	parts := util.SplitLines(lines, "")
 	sum := 0
@@ -31,7 +31,7 @@ func solve2024Day5Part1(lines []string) interface{} {
 	return sum
 }
 
-func solve2024Day5Part2(lines []string) interface{} {
+func solve2024Day5Part2(lines []string, test bool) interface{} {
 	rules := make(map[int][]int)
 	parts := util.SplitLines(lines, "")
 	sum := 0
